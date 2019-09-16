@@ -28,7 +28,13 @@ Connect your android phone or emulator to your computer and run:
 
 ```
 Usage
-   $ oib http://cesarferreira.com
+
+   $ oib URL
+```
+
+Example:
+```sh
+oib http://cesarferreira.com
 ```
 
 ## Created by
@@ -36,7 +42,6 @@ Usage
 
 ## License
 MIT © [Cesar Ferreira](http://cesarferreira.com)
-
 
 <!-- ## Logo
 by <a href="http://www.iconka.com">iconka</a> -->
