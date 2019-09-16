@@ -44,3 +44,6 @@ Usage
 
 ## License
 MIT © [Cesar Ferreira](http://cesarferreira.com)
+
+## Image mock 
+by <a href="https://dribbble.com/unopie">UnoPie</a>
