@@ -4,7 +4,7 @@
  -->
 
 <h1 align="center">oib</h1>
-<p align="center">Quickly <i>purrge</i> android apps from your phone</p>
+<p align="center">Open <i>anything</i> on your android phone</p>
 <p align="center">
   <a href="https://travis-ci.org/cesarferreira/purrge"><img src="https://travis-ci.org/cesarferreira/purrge.svg?branch=master" alt="Build Status"></a>
   <a href="https://www.npmjs.com/package/purrge"><img src="https://img.shields.io/npm/dt/purrge.svg" alt="npm"></a>
@@ -30,11 +30,16 @@ Connect your android phone or emulator to your computer and run:
 Usage
 
    $ oib URL
+   $ oib DEEP_LINK
+   $ oib YOUTUBE_LINK
+   $ oib ...
 ```
 
 Example:
 ```sh
-oib http://cesarferreira.com
+oib http://cesarferreira.com                      # URL
+oib recipes://recipe/02d8c78ac03a37ef874          # DEEP LINK to the "recipes app"
+oib https://www.youtube.com/watch?v=GxjpzUgZvbo   # opens youtube
 ```
 
 ## Created by
