@@ -1,7 +1,7 @@
 {
-    "name": "adb-open-in-browser",
+    "name": "open-on-android",
     "version": "0.0.0",
-    "description": "open an url in the android browser",
+    "description": "Open anything on your android phone",
     "author": {
         "name": "Cesar Ferreira",
         "email": "cesar.manuel.ferreira@gmail.com",
@@ -10,10 +10,10 @@
     "scripts": {
         "start": "node example.js",
         "lint": "eslint src/**/*",
-        "test": "xo"
+        "test": "node test.js"
     },
     "bin": {
-        "oib": "cli.js"
+        "ooa": "cli.js"
     },
     "main": "cli.js",
     "keywords": [],
@@ -32,11 +32,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/cesarferreira/adb-open-in-browser.git"
+        "url": "https://github.com/cesarferreira/open-on-android.git"
     },
     "bugs": {
-        "url": "https://github.com/cesarferreira/adb-open-in-browser/issues"
+        "url": "https://github.com/cesarferreira/open-on-android/issues"
     },
-    "homepage": "https://github.com/cesarferreira/adb-open-in-browser#readme",
+    "homepage": "https://github.com/cesarferreira/open-on-android#readme",
     "license": "MIT"
 }

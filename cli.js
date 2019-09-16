@@ -13,7 +13,7 @@ updateNotifier({
 
 const cli = meow(`
 Usage
-   $ oib
+   $ ooa
 `, {
     alias: {
         v: 'version'
