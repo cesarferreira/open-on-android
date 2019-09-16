@@ -30,7 +30,6 @@ function openInBrowser(deviceSerialNumber, url) {
         process.exit(2);
     }
 
-    // adb shell am start -a android.intent.action.VIEW -d  https://delivery.test.glueit.io/api/v1/tokens/bb5e176ab8ec49daa4174e6013de6593-651265bd2578402d8c
     shell.exec(`adb -s ${deviceSerialNumber} shell am start -a android.intent.action.VIEW -d ${url}`);
 }
 
