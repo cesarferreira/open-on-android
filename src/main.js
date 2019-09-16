@@ -2,23 +2,15 @@
 
 'use strict';
 
-const Chalk = require('chalk');
 const Utils = require('./utils/utils');
-const log = console.log;
 const inquirer = require('inquirer');
 const adb = require('node-adb-api');
+const log = console.log;
+const shell = require('shelljs');
 
-const CHOOSE_WHAT_TO_DO_OPTIONS = [
-    'Open',
-    'Uninstall',
-    'Clear Data',
-    'Download APK',
-    'Cancel'
-]
 
-let packages;
 
-function showDeviceSelection(devices) {
+function showDeviceSelection(devices, url) {
     inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
     inquirer.prompt({
         type: 'list',
@@ -27,52 +19,19 @@ function showDeviceSelection(devices) {
         choices: devices
     }).then(selection => {
         let selectedDevice = selection.device.substr(0, selection.device.indexOf(' '));
-        showPackageSelection(selectedDevice)
+        openInBrowser(selectedDevice, url)
     });
 }
 
-function showPackageSelection(deviceSerialNumber) {
-    packages = adb.getPackagesByDeviceSerialNumber(deviceSerialNumber);
+function openInBrowser(deviceSerialNumber, url) {
 
     if (!adb.isAnyDeviceConnected(deviceSerialNumber)) {
         Utils.titleError(`None or more than one device/emulator connected`);
         process.exit(2);
     }
 
-    inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
-    inquirer.prompt({
-        type: 'autocomplete',
-        name: 'package',
-        pageSize: 10,
-        message: 'What package do you want to purrge?',
-        source: adb.fuzzySearchPackages
-    }).then(packageAnswer => {
-
-        inquirer.prompt({
-            type: 'list',
-            name: 'packageAction',
-            message: 'What do you want to do with this app?',
-            choices: CHOOSE_WHAT_TO_DO_OPTIONS
-        }).then(packageActionAnswer => {
-            const chosenPackage = packageAnswer.package;
-            const packageAction = packageActionAnswer.packageAction.toLowerCase();
-
-            if (packageAction === 'uninstall') {
-                Utils.title(`Uninstalling: ${Chalk.green(chosenPackage)}...`);
-                adb.uninstall(chosenPackage, deviceSerialNumber);
-            } else if (packageAction === 'clear data') {
-                Utils.title(`Clearing data: ${Chalk.green(chosenPackage)}...`);
-                adb.clearData(chosenPackage, deviceSerialNumber);
-            } else if (packageAction === 'open') {
-                Utils.title(`Opening app: ${Chalk.green(chosenPackage)}...`);
-                adb.launchApp(chosenPackage, deviceSerialNumber);
-            } else if (packageAction === 'download apk') {
-                Utils.title(`Downloading apk for: ${Chalk.green(chosenPackage)}...`);
-                const fileName = adb.downloadAPK(deviceSerialNumber, chosenPackage);
-                log(`Downloaded apk to: ${Chalk.yellow(fileName)}`);
-            }
-        });
-    });
+    // adb shell am start -a android.intent.action.VIEW -d  https://delivery.test.glueit.io/api/v1/tokens/bb5e176ab8ec49daa4174e6013de6593-651265bd2578402d8c
+    shell.exec(`adb -s ${deviceSerialNumber} shell am start -a android.intent.action.VIEW -d ${url}`);
 }
 
 function getTheOnlyConnectedDeviceSerial(devices) {
@@ -82,6 +41,11 @@ function getTheOnlyConnectedDeviceSerial(devices) {
 // Main code //
 module.exports = {
     init: (input, flags) => {
+        if (input.length < 1) {
+            Utils.titleError(`Missing URL parameter`);
+            process.exit(1);
+        }
+
         const devices = adb.getListOfDevices();
 
         if (devices.length === 0) {
@@ -91,10 +55,10 @@ module.exports = {
             // only single device is connected proceed with package selection
             const onlyDevice = getTheOnlyConnectedDeviceSerial(devices)
 
-            showPackageSelection(onlyDevice);
+            openInBrowser(onlyDevice, input[0]);
         } else {
             // multiple device connected show device selection
-            showDeviceSelection(devices);
+            showDeviceSelection(devices, input[0]);
         }
     }
 };
