@@ -14,7 +14,6 @@
 
 <p align="center">
   <img src="extras/ss.png" width="100%" />
-  <!-- <img src="https://raw.githubusercontent.com/cesarferreira/assets/master/images/screenshot_terminal_hello_world.png" width="100%" /> -->
 </p>
 
 ## Install
@@ -49,6 +48,3 @@ Usage
 
 ## License
 MIT © [Cesar Ferreira](http://cesarferreira.com)
-
-<!-- ## Logo
-by <a href="http://www.iconka.com">iconka</a> -->
