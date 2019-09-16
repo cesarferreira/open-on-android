@@ -13,8 +13,8 @@
 </p>
 
 <p align="center">
-  <!-- <img src="extras/anim.gif" width="100%" /> -->
-  <img src="https://raw.githubusercontent.com/cesarferreira/assets/master/images/screenshot_terminal_hello_world.png" width="100%" />
+  <img src="extras/ss.png" width="100%" />
+  <!-- <img src="https://raw.githubusercontent.com/cesarferreira/assets/master/images/screenshot_terminal_hello_world.png" width="100%" /> -->
 </p>
 
 ## Install
@@ -38,9 +38,10 @@ Usage
 ## Example:
 
 ```sh
-  ooa http://cesarferreira.com                      # URL
-  ooa recipes://recipe/02d8c78ac03a37ef874          # DEEP LINK to the "recipes app"
-  ooa https://www.youtube.com/watch?v=GxjpzUgZvbo   # opens youtube
+  $ ooa http://cesarferreira.com                      # URL that opens in your default browser
+  $ ooa recipes://recipe/02d8c78ac03a37ef874          # DEEP LINK to the "recipes app"
+  $ ooa https://www.youtube.com/watch?v=GxjpzUgZvbo   # opens youtube
+  $ ooa wathever you want                             # urls that deep link, apps, wathever
 ```
 
 ## Created by

@@ -7,6 +7,7 @@ const inquirer = require('inquirer');
 const adb = require('node-adb-api');
 const log = console.log;
 const shell = require('shelljs');
+const Chalk = require('chalk');
 
 
 
@@ -30,7 +31,11 @@ function openInBrowser(deviceSerialNumber, url) {
         process.exit(2);
     }
 
-    shell.exec(`adb -s ${deviceSerialNumber} shell am start -a android.intent.action.VIEW -d ${url}`);
+    shell.exec(`adb -s ${deviceSerialNumber} shell am start -a android.intent.action.VIEW -d ${url}`, { silent: true }, function(code, stdout, stderr) {
+        if (stderr) {
+            log(Chalk.red(stderr))
+        }
+    });
 }
 
 function getTheOnlyConnectedDeviceSerial(devices) {
