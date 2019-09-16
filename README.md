@@ -1,8 +1,4 @@
 
-
-<!-- <p align="center"><a href="https://github.com/cesarferreira/open-on-android" target="_blank"><img width="200"src="https://raw.githubusercontent.com/cesarferreira/assets/master/images/screenshot_terminal_hello_world.png"></a></p>
- -->
-
 <h1 align="center"><strong>O</strong>pen <strong>O</strong>n <strong>A</strong>ndroid</h1>
 <p align="center">Open <i>anything</i> on your android phone</p>
 <p align="center">
@@ -13,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="extras/ss.png" width="100%" />
+  <img src="extras/ss2.png" width="100%" />
 </p>
 
 ## Install
