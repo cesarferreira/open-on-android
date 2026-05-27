@@ -19,7 +19,7 @@
     "keywords": [],
     "dependencies": {
         "chalk": "^2.4.2",
-        "inquirer": "^7.0.0",
+        "inquirer": "^14.0.0",
         "inquirer-autocomplete-prompt": "^1.0.1",
         "meow": "^5.0.0",
         "node-adb-api": "^1.2.0",
@@ -27,8 +27,8 @@
         "update-notifier": "^3.0.1"
     },
     "devDependencies": {
-        "eslint": "^6.4.0",
-        "xo": "^0.24.0"
+        "eslint": "^10.4.0",
+        "xo": "^2.0.2"
     },
     "repository": {
         "type": "git",
